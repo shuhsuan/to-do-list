@@ -5,6 +5,41 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faXmark, faCheck} from '@fortawesome/free-solid-svg-icons'
 
+function Todo({index, todo, markTodo, removeTodo}) { //handles the mark and remove function buttons
+  return(
+    <div className="todo">
+      <span style={{ textDecoration: todo.isDone? "line-through" : ""}}>{todo.text}</span>
+      <div className="buttons">
+        <Button variant="outline-success" onClick={() => markTodo(index)}><FontAwesomeIcon icon={faCheck} /></Button>{' '}
+        <Button variant="outline-danger" onClick={() => removeTodo(index)}><FontAwesomeIcon icon={faXmark} /></Button>
+        </div>
+    </div>
+  )
+}
+
+function FormTodo({addTodo}){
+  const [value, setValue] = React.useState("");
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    if(!value) return;
+    addTodo(value);
+    setValue("");
+  };
+
+  return(
+    <Form onSubmit={handleSubmit}>
+      <Form.Group>
+        <Form.Label><b>Add Todo</b></Form.Label> 
+        <Form.Control type="text" className="input" value={value} onChange={e => setValue(e.target.value)} placeholder="Add new todo" />
+      </Form.Group>
+      <Button variant="primary mb-3 mt-2" type="submit">
+        Submit
+      </Button>
+    </Form>
+  )
+}
+
 function App() {
   const [todos, setTodos] = React.useState([
     {
@@ -33,9 +68,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1 className ="text-center">To-do List</h1>
-        <FormTodo addTodo={addTodo} />
-        <div>
+      <h1 className ="text-center sitcky-top text-white bg-dark mb-0">To-do List</h1>
+        <div id="form">
+          <FormTodo addTodo={addTodo} />
           {todos.map((todo, index) => (
             <Card>
               <Card.Body>
@@ -53,41 +88,6 @@ function App() {
       </header>
     </div>
   );
-}
-
-function Todo({index, todo, markTodo, removeTodo}) { //handles the mark and remove function buttons
-  return(
-    <div className="todo">
-      <span style={{ textDecoration: todo.isDone? "line-through" : ""}}>{todo.text}</span>
-      <div>
-        <Button variant="outline-success" onClick={() => markTodo(index)}><FontAwesomeIcon icon={faCheck} /></Button>{' '}
-        <Button variant="outline-danger" onClick={() => removeTodo(index)}><FontAwesomeIcon icon={faXmark} /></Button>
-      </div>
-    </div>
-  )
-}
-
-function FormTodo({addTodo}){
-  const [value, setValue] = React.useState("");
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    if(!value) return;
-    addTodo(value);
-    setValue("");
-  };
-
-  return(
-    <Form onSubmit={handleSubmit}>
-      <Form.Group>
-        <Form.Label><b>Add Todo</b></Form.Label> 
-        <Form.Control type="text" className="input" value={value} onChange={e => setValue(e.target.value)} placeholder="Add new todo" />
-      </Form.Group>
-      <Button variant="primary mb-3" type="submit">
-        Submit
-      </Button>
-    </Form>
-  )
 }
 
 export default App;
