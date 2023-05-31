@@ -68,7 +68,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-      <h1 className ="text-center sitcky-top text-white bg-dark mb-0">To-do List</h1>
+      <h1 className ="text-center sitcky-top text-white mb-0">To-do List</h1>
         <div id="form">
           <FormTodo addTodo={addTodo} />
           {todos.map((todo, index) => (
