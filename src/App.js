@@ -30,8 +30,8 @@ function FormTodo({addTodo}){
   return(
     <Form onSubmit={handleSubmit}>
       <Form.Group>
-        <Form.Label><b>Add Todo</b></Form.Label> 
-        <Form.Control type="text" className="input" value={value} onChange={e => setValue(e.target.value)} placeholder="Add new todo" />
+        <Form.Label><b>Add Tasks</b></Form.Label> 
+        <Form.Control type="text" className="input" value={value} onChange={e => setValue(e.target.value)} placeholder="Add new task" />
       </Form.Group>
       <Button variant="primary mb-3 mt-2" type="submit">
         Submit
