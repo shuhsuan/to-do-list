@@ -3,6 +3,7 @@
   background-color: #282c34;
   min-height: 100vh;
   position: relative;
+  font-family: Changa, sans-serif;
 }
 
 .App-header {
@@ -16,9 +17,9 @@
 }
 
 #form{
-  padding-right: 40%;
-  width: 90%;
+  width: 55%;
   position: relative;
+  right: 17%;
 }
 
 .todo{
@@ -30,4 +31,12 @@
   margin-left: auto;
   flex-direction: row;
 }
+
+#weather{
+position: absolute;
+ z-index: 9;
+ right: 12%;
+ top: 10px;
+}
+
 

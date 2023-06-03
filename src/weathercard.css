@@ -1,0 +1,18 @@
+#card{
+    font-family: Changa, sans-serif;
+    width: 18rem;
+    border-radius: 4%;
+    border-style: outset;
+    padding: 10px;
+    background-color: rgb(99, 114, 128)
+}
+
+#img{
+    width: 100%;
+    padding: 20px;
+}
+
+#title{
+    font-size: 27px;
+    font-weight: bold;
+}

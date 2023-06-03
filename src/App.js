@@ -4,6 +4,10 @@ import {Button, Card, Form} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faXmark, faCheck} from '@fortawesome/free-solid-svg-icons'
+import {API_KEY, API_ENDPOINT} from './config';
+import UseFetch from './fetch';
+import CitySelector from './cityselector';
+import WeatherRender from './weatherRender'
 
 function Todo({index, todo, markTodo, removeTodo}) { //handles the mark and remove function buttons
   return(
@@ -31,7 +35,7 @@ function FormTodo({addTodo}){
     <Form onSubmit={handleSubmit}>
       <Form.Group>
         <Form.Label><b>Add Tasks</b></Form.Label> 
-        <Form.Control type="text" className="input" value={value} onChange={e => setValue(e.target.value)} placeholder="Add new task" />
+        <Form.Control id="textbox" autocomplete="off" type="text" className="input" value={value} onChange={e => setValue(e.target.value)} placeholder="Add new task" />
       </Form.Group>
       <Button variant="primary mb-3 mt-2" type="submit">
         Submit
@@ -41,6 +45,8 @@ function FormTodo({addTodo}){
 }
 
 function App() {
+  const {data, error, isLoading, setUrl} = UseFetch(); //Import elements of UseFetch I need to use
+
   const [todos, setTodos] = React.useState([
     {
       text: "This is a sample task",
@@ -65,11 +71,20 @@ function App() {
      setTodos(newTodos); //And the list can be updated 
   }
 
+  const getContent = () => {
+    if(error) return <h2>Error when fetching: {error}</h2>
+    if(!data && isLoading) return <h2>LOADING...</h2>
+    if(!data) return null;
+    return <WeatherRender weathers={data.list} />
+  }
+
+
+
   return (
     <div className="App">
       <header className="App-header">
+      <div id="form">
       <h1 className ="text-center sitcky-top text-white mb-0">To-do List</h1>
-        <div id="form">
           <FormTodo addTodo={addTodo} />
           {todos.map((todo, index) => (
             <Card>
@@ -85,6 +100,13 @@ function App() {
             </Card>
           ))}
         </div>
+
+        <div id="weather">
+        <CitySelector id="selector" onSearch={(city) => setUrl(`${API_ENDPOINT}/data/2.5/forecast?q=${city}&cnt=1&appid=${API_KEY}&units=metric`)} />
+        
+        {getContent()}
+        </div>
+
       </header>
     </div>
   );
