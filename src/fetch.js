@@ -37,6 +37,7 @@ const UseFetch = (initialUrl) => {
             } //return error message if server error
             
             setData(data);
+            console.log(url)
         })
         .catch((error) => {
             setIsLoading(false);
