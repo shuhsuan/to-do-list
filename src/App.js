@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faXmark, faCheck} from '@fortawesome/free-solid-svg-icons'
 import UseFetch from './fetch';
 import CitySelector from './cityselector';
-import WeatherRender from './weatherRender'
+import WeatherCard from './weathercard'
 
 function Todo({index, todo, markTodo, removeTodo}) { //handles the mark and remove function buttons
   return(
@@ -74,7 +74,7 @@ const getContent = () => {
   if(error) return <h2>Error when fetching: {error}</h2>
   if(!data && isLoading) return <h2>LOADING...</h2>
   if(!data) return null;
-  return <WeatherRender weathers={data.list} /> //this data refers to the one from UseFetch
+  return <WeatherCard summary={data.current.summary} /> //this data refers to the one from UseFetch
 }
 
   return (
