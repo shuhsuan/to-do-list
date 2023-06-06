@@ -11,12 +11,15 @@ import sunny from './icons/sun.png'
 import weather from './icons/weather-news.png'
 import './weathercard.css'
 
-const WeatherCard = ({dt, temp_min, temp_max, main, icon}) => {
+const WeatherCard = ({summary}) => {
 
     const date = new Date(); // create a date object with Date class contructor
-    const times = date.toLocaleTimeString();
+    //const times = date.toLocaleTimeString();
+    const day = date.getDate();
+    const month = date.getMonth();
+    const year = date.getFullYear();
 
-    const getSvg = () => {
+    /*const getSvg = () => {
 
         console.log(icon)
         switch(icon){
@@ -40,22 +43,24 @@ const WeatherCard = ({dt, temp_min, temp_max, main, icon}) => {
             case "50n": return foggy;
             case "": return weather;
         }
-    }
+    }*/
 
     return(
         <>
+        
         <div id="card">
-            <img
+            {/*
+           <img
             variant="top" 
             src={getSvg()} //conditional erndering on the icon code 
             alt="Weather Icon here"
             id="img"
-            />
+    />
             <div id="body">
                 <div id="title">{main}</div>
                 <p>
                     {date.toLocaleDateString()} - {times}
-                </p> {/*datetime recived in milliseconds so needs to be turned to local date time*/}
+                </p>
                 <p>
                     Max: {temp_max}
                 </p>
@@ -63,7 +68,18 @@ const WeatherCard = ({dt, temp_min, temp_max, main, icon}) => {
                     Min: {temp_min}
                 </p>
             </div>
+        */}
+
+        <div id="body">
+            <div id="title">{summary}</div>
         </div>
+
+
+
+
+
+        </div>
+    
         </>
     )
 }

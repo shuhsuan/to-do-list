@@ -4,7 +4,6 @@ import {Button, Card, Form} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faXmark, faCheck} from '@fortawesome/free-solid-svg-icons'
-import {API_KEY, API_ENDPOINT} from './config';
 import UseFetch from './fetch';
 import CitySelector from './cityselector';
 import WeatherRender from './weatherRender'
@@ -71,14 +70,12 @@ function App() {
      setTodos(newTodos); //And the list can be updated 
   }
 
-  const getContent = () => {
-    if(error) return <h2>Error when fetching: {error}</h2>
-    if(!data && isLoading) return <h2>LOADING...</h2>
-    if(!data) return null;
-    return <WeatherRender weathers={data.list} />
-  }
-
-
+const getContent = () => {
+  if(error) return <h2>Error when fetching: {error}</h2>
+  if(!data && isLoading) return <h2>LOADING...</h2>
+  if(!data) return null;
+  return <WeatherRender weathers={data.list} /> //this data refers to the one from UseFetch
+}
 
   return (
     <div className="App">
@@ -104,7 +101,7 @@ function App() {
         </div>
 
         <div id="weather">
-        <CitySelector id="selector" onSearch={(city) => setUrl(`${API_ENDPOINT}/data/2.5/forecast?q=${city}&cnt=1&appid=${API_KEY}&units=metric`)} />
+        <CitySelector id="selector" onSearch={(city) => {setUrl(`https://ai-weather-by-meteosource.p.rapidapi.com/current?place_id=${city}&timezone=auto&language=en&units=metric`)}} />
         
         {getContent()}
         </div>

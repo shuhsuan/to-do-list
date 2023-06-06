@@ -1,5 +1,6 @@
 //custom hook
 import {useState, useEffect} from 'react'
+import {API_KEY, API_ENDPOINT} from './config';
 
 const UseFetch = (initialUrl) => {
 
@@ -7,6 +8,14 @@ const UseFetch = (initialUrl) => {
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(null);
     const [url, setUrl] = useState(initialUrl); //whenever user searches for a city, url will change, to keep track of it, this state exists. 
+
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': API_KEY,
+            'X-RapidAPI-Host': API_ENDPOINT
+        }
+    }
 
     useEffect(() => 
     {
@@ -17,7 +26,7 @@ const UseFetch = (initialUrl) => {
         setData(null);
         setError(null);
 
-        fetch(url)
+        fetch(url, options)
         .then((response) => response.json())
         .then((data) => {
 
