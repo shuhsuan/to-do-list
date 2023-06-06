@@ -35,7 +35,7 @@ function FormTodo({addTodo}){
     <Form onSubmit={handleSubmit}>
       <Form.Group>
         <Form.Label><b>Add Tasks</b></Form.Label> 
-        <Form.Control id="textbox" autocomplete="off" type="text" className="input" value={value} onChange={e => setValue(e.target.value)} placeholder="Add new task" />
+        <Form.Control id="textbox" autoComplete="off" type="text" className="input" value={value} onChange={e => setValue(e.target.value)} placeholder="Add new task" />
       </Form.Group>
       <Button variant="primary mb-3 mt-2" type="submit">
         Submit
@@ -87,6 +87,7 @@ function App() {
       <h1 className ="text-center sitcky-top text-white mb-0">To-do List</h1>
           <FormTodo addTodo={addTodo} />
           {todos.map((todo, index) => (
+            <div key={index}>
             <Card>
               <Card.Body>
                 <Todo 
@@ -98,6 +99,7 @@ function App() {
                 />
               </Card.Body>
             </Card>
+            </div>
           ))}
         </div>
 
