@@ -74,7 +74,7 @@ const getContent = () => {
   if(error) return <h2>Error when fetching: {error}</h2>
   if(!data && isLoading) return <h2>LOADING...</h2>
   if(!data) return null;
-  return <WeatherCard summary={data.current.summary} /> //this data refers to the one from UseFetch
+  return <WeatherCard summary={data.current.summary} icon={data.current.icon_num} temp={data.current.temperature} feels={data.current.feels_like} uv={data.current.uv_index} windspeed={data.current.wind.speed}/> //this data refers to the one from UseFetch
 }
 
   return (
