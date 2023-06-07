@@ -28,6 +28,7 @@ const WeatherCard = ({summary, icon, temp, feels, uv, windspeed}) => {
     const day = date.getDate();
     const month = date.getMonth();
     const year = date.getFullYear();
+    const time = new Date(date.getTime())
 
     const pic = {
         1: unknown,
@@ -81,7 +82,11 @@ const WeatherCard = ({summary, icon, temp, feels, uv, windspeed}) => {
         <div id="body">
 
             <div id="title">{summary}</div>
-            <div>{day} - {month} - {year}</div>
+            <div>{day} - {month} - {year} | {time.toLocaleTimeString()}</div>
+            <div>Current temperature: {temp}°C</div>
+            <div>Feels like: {feels}°C</div>
+            <div>UV index: {uv}</div>
+            <div>Wind speeed: {windspeed}m/s</div>
 
         </div>
 
