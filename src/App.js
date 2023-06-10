@@ -13,8 +13,8 @@ function Todo({index, todo, markTodo, removeTodo}) { //handles the mark and remo
     <div className="todo">
       <span style={{ textDecoration: todo.isDone? "line-through" : ""}}>{todo.text}</span>
       <div className="buttons">
-        <Button variant="outline-success" onClick={() => markTodo(index)}><FontAwesomeIcon icon={faCheck} /></Button>{' '}
-        <Button variant="outline-danger" onClick={() => removeTodo(index)}><FontAwesomeIcon icon={faXmark} /></Button>
+        <Button id="mark done" variant="outline-success" onClick={() => markTodo(index)}><FontAwesomeIcon icon={faCheck} /></Button>{' '}
+        <Button id="remove task" variant="outline-danger" onClick={() => removeTodo(index)}><FontAwesomeIcon icon={faXmark} /></Button>
         </div>
     </div>
   )
