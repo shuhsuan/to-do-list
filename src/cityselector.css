@@ -2,10 +2,24 @@
     font-family: Changa, sans-serif;
 }
 
-#butt{
+#title{
     padding: 5px;
+    text-shadow: -1px 0 black;
+}
+
+#butt{
+    padding: 7px;
+    margin: 5%;
+    background-color: rgb(225, 165, 97);
+    border-style: outset;
+    border-color: rgb(225, 165, 97);
+    border-width: 2px;
 }
 
 #input{
     padding: 5px;
+    border-style: outset;
+    border-color: rgb(255, 255, 255);
+    border-width: 2px;
+    white-space: nowrap;
 }

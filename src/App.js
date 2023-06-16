@@ -36,7 +36,7 @@ function FormTodo({addTodo}){
         <Form.Label><b>Add Tasks</b></Form.Label> 
         <Form.Control id="textbox" autoComplete="off" type="text" className="input" value={value} onChange={e => setValue(e.target.value)} placeholder="Add new task" />
       </Form.Group>
-      <Button variant="primary mb-3 mt-2" type="submit">
+      <Button id="todobutt" type="submit">
         Submit
       </Button>
     </Form>
@@ -74,18 +74,18 @@ const getContent = () => {
   if(error) return <h2>Error when fetching: {error}</h2>
   if(!data && isLoading) return <h2>LOADING...</h2>
   if(!data) return null;
-  return <WeatherCard summary={data.current.summary} icon={data.current.icon_num} temp={data.current.temperature} feels={data.current.feels_like} uv={data.current.uv_index} windspeed={data.current.wind.speed}/> //this data refers to the one from UseFetch
+  return <WeatherCard id="weatherCard" summary={data.current.summary} icon={data.current.icon_num} temp={data.current.temperature} feels={data.current.feels_like} uv={data.current.uv_index} windspeed={data.current.wind.speed}/> //this data refers to the one from UseFetch
 }
 
   return (
     <div className="App">
       <header className="App-header">
       <div id="form">
-      <h1 className ="text-center sitcky-top text-white mb-0">To-do List</h1>
+      <h1 className ="text-center sitcky-top text-black mb-0">To-do List</h1>
           <FormTodo addTodo={addTodo} />
           {todos.map((todo, index) => (
             <div key={index}>
-            <Card>
+            <Card id="task" >
               <Card.Body>
                 <Todo 
                 key={index}
@@ -102,8 +102,10 @@ const getContent = () => {
 
         <div id="weather">
         <CitySelector id="selector" onSearch={(city) => {setUrl(`https://ai-weather-by-meteosource.p.rapidapi.com/current?place_id=${city}&timezone=auto&language=en&units=metric`)}} />
-        
+
+        <div id="weatherCard">
         {getContent()}
+        </div>
         </div>
 
       </header>

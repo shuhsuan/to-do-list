@@ -83,10 +83,10 @@ const WeatherCard = ({summary, icon, temp, feels, uv, windspeed}) => {
 
             <div id="title">{summary}</div>
             <div>{day} - {month} - {year} | {time.toLocaleTimeString()}</div>
-            <div>Current temperature: {temp}°C</div>
-            <div>Feels like: {feels}°C</div>
-            <div>UV index: {uv}</div>
-            <div>Wind speeed: {windspeed}m/s</div>
+            <div><b>Current temperature:</b> {temp}°C</div>
+            <div><b>Feels like:</b> {feels}°C</div>
+            <div><b>UV index:</b> {uv}</div>
+            <div><b>Wind speeed:</b> {windspeed}m/s</div>
 
         </div>
 

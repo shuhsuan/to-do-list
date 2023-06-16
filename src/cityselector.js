@@ -14,7 +14,7 @@ const CitySelector = ({ onSearch }) => {
 
   return (
     <div id="selector">
-      <div>
+      <div id="title">
         <h1>Search your city</h1>
       </div>
 
@@ -26,7 +26,7 @@ const CitySelector = ({ onSearch }) => {
         onKeyDown={handleKeyPress} //if Enter is the key pressed, submit Form
       />
 
-      <Button id="butt" variant="primary mb-3 mt-2" type="submit" onClick={() => onSearch(city)}>Check Weather</Button>
+      <Button id="butt"  type="submit" onClick={() => onSearch(city)}>Check Weather</Button>
     </div>
   );
 };

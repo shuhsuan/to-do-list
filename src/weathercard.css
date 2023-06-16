@@ -1,11 +1,12 @@
 #card{
     font-family: Changa, sans-serif;
     width: 18rem;
-    border-radius: 4%;
+    border-radius: 10px;
     border-style: outset;
     padding: 10px;
-    background-color: rgb(51, 64, 76);
-    border-color: rgb(45, 57, 67);
+    background-color: rgb(225, 165, 97);
+    border-color: rgb(225, 165, 97);
+    border-width: 2px;
 }
 
 #img{
@@ -17,3 +18,5 @@
     font-size: 27px;
     font-weight: bold;
 }
+
+/*rgb(51, 64, 76);*/
