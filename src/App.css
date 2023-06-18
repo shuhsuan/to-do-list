@@ -1,93 +1,98 @@
 .App {
   text-align: center;
   background-color: rgb(235, 226, 209);
-  min-height: 100vh;
-  min-width: 185vh;
   font-family: Changa, sans-serif;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: grid;
 }
 
 .App-header {
-  display: inline-block;
-  flex-direction: column;
+  display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: center safe;
   font-size: calc(3px + 2vmin);
   color: black;
   position: relative;
   margin: auto;
+  min-height: 100vh;
+  min-width: 150px;
+  grid-template-rows: 40vw 10vw;
+  gap: 2em;
 }
 
-#form{
-  width: 45vw;
-  right: 25vw;
-  position: relative;
+#form {
   background: rgb(249, 200, 143);
+  width: 50vw;
   border-radius: 15px;
-  padding: 1.5vw;
-  margin: 5%;
+  padding: 1vw;
+  margin: 4%;
   box-shadow: 10px 5px 5px black;
   min-width: 350px;
+  grid-column: span 2;
 }
 
-.todo{
+.todo {
   display: flex;
   word-wrap: break-word;
 }
 
-.buttons{
+.buttons {
   margin-left: auto;
   flex-direction: row;
 }
 
-#weather{
-  position: relative;
-width: 20vw;
-left: 39vw;
-bottom: 43.5vh;
- background: rgb(249, 200, 143);
- padding: 1.5vw;
- border-radius: 10px;
- box-shadow: 10px 5px 5px black;
- min-width: 300px;
+#weather {
+  background: rgb(249, 200, 143);
+  right: 10%;
+  padding: 1.5vw;
+  border-radius: 10px;
+  box-shadow: 10px 5px 5px black;
+  min-width: 200px;
 }
 
-#weatherCard{
+#weatherCard {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-#todobutt{
+#todobutt {
   padding: 7px;
-    margin: 2%;
-    width: auto;
-    background-color: rgb(225, 165, 97);
-    border-style: outset;
-    border-color: rgb(225, 165, 97);
-    border-width: 2px;
-}
-
-#textbox{
+  margin: 2%;
+  width: auto;
+  background-color: rgb(225, 165, 97);
   border-style: outset;
-    border-color: rgb(255, 255, 255);
-    border-width: 2px;
-    white-space: nowrap;
+  border-color: rgb(225, 165, 97);
+  border-width: 2px;
 }
 
-#task{
+#textbox {
   border-style: outset;
-    border-color: rgb(255, 255, 255);
-    border-width: 2px;
-    white-space: nowrap;
+  border-color: rgb(255, 255, 255);
+  border-width: 2px;
+  white-space: nowrap;
 }
 
-@media screen and (max-width: 480px)
-{
-  #form, #weather{
-    flex-direction: row;
+#task {
+  border-style: outset;
+  border-color: rgb(255, 255, 255);
+  border-width: 2px;
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 700px) {
+  #weather{
+    position: none;
+
+  }
+  #form{
+    position: none;
+  }
+  .App-header{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }
-
-
-

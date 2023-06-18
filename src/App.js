@@ -11,7 +11,7 @@ import WeatherCard from './weathercard'
 function Todo({index, todo, markTodo, removeTodo}) { //handles the mark and remove function buttons
   return(
     <div className="todo">
-      <span style={{ textDecoration: todo.isDone? "line-through" : ""}}>{todo.text}</span>
+      <span id="taskText" style={{ textDecoration: todo.isDone? "line-through" : ""}}>{todo.text}</span>
       <div className="buttons">
         <Button aria-label="mark-done" id="mark done" variant="outline-success" onClick={() => markTodo(index)}><FontAwesomeIcon icon={faCheck} /></Button>{' '}
         <Button aria-label="delete" id="remove task" variant="outline-danger" onClick={() => removeTodo(index)}><FontAwesomeIcon icon={faXmark} /></Button>
